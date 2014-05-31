@@ -86,7 +86,7 @@ exports.schemaGrammar = _.defaults({
   compileKey: function(builder, command, type) {
     var columns = this.columnize(command.columns);
     var table = this.wrapTable(builder);
-    return 'alter table ' + table + " add " + type + " " + command.index + "(" + columns + ")";
+    return 'alter table ' + table + " add " + type + " " + this.wrap(command.index) + " (" + columns + ")";
   },
 
   // Compile a drop column command.
