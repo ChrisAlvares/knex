@@ -46,13 +46,13 @@ exports.schemaGrammar = _.defaults({
   compileUnique: function(builder, command) {
     var table = this.wrapTable(builder);
     var columns = this.columnize(command.columns);
-    return 'alter table ' + table + ' add constraint ' + command.index + ' unique (' + columns + ')';
+    return 'alter table ' + table + ' add constraint ' + this.wrap(command.index) + ' unique (' + columns + ')';
   },
 
   // Compile a plain index key command.
   compileIndex: function(builder, command) {
     var columns = this.columnize(command.columns);
-    return "create index " + command.index + " on " + this.wrapTable(builder) + ' (' + columns + ')';
+    return "create index " + this.wrap(command.index) + " on " + this.wrapTable(builder) + ' (' + columns + ')';
   },
 
   // Compile a drop column command.

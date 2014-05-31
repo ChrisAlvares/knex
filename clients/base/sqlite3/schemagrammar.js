@@ -91,14 +91,14 @@ exports.schemaGrammar = _.defaults({
   compileUnique: function(builder, command) {
     var columns = this.columnize(command.columns);
     var table = this.wrapTable(builder);
-    return 'create unique index ' + command.index + ' on ' + table + ' (' + columns + ')';
+    return 'create unique index ' + this.wrap(command.index) + ' on ' + table + ' (' + columns + ')';
   },
 
   // Compile a plain index key command.
   compileIndex: function(builder, command) {
     var columns = this.columnize(command.columns);
     var table = this.wrapTable(builder);
-    return 'create index ' + command.index + ' on ' + table + ' (' + columns + ')';
+    return 'create index ' + this.wrap(command.index) + ' on ' + table + ' (' + columns + ')';
   },
 
   // Compile a foreign key command.
